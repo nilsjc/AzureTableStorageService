@@ -13,7 +13,7 @@ namespace AzureTableStorageService
             var insertOperation = TableOperation.InsertOrMerge(noteEntity);
             try
             {
-                await CreateCloudTable(GlobalStrings.CasesTableName)
+                await CreateCloudTable(GlobalStrings.NotesTableName)
                         .ExecuteAsync(insertOperation);
                 return new ReturnObject(true, noteEntity.Id);
             }
@@ -27,7 +27,7 @@ namespace AzureTableStorageService
         {
             TableOperation retrieveOperation = TableOperation.Retrieve<NoteEntity>(partitionKey, id);
 
-            TableResult retrievedResult = await CreateCloudTable(GlobalStrings.CasesTableName)
+            TableResult retrievedResult = await CreateCloudTable(GlobalStrings.NotesTableName)
                                                 .ExecuteAsync(retrieveOperation);
 
             try
@@ -62,7 +62,7 @@ namespace AzureTableStorageService
             TableContinuationToken token = null;
             do
             {
-                var resultSegment = await CreateCloudTable(GlobalStrings.CasesTableName)
+                var resultSegment = await CreateCloudTable(GlobalStrings.NotesTableName)
                     .ExecuteQuerySegmentedAsync(query, token);
 
                 token = resultSegment.ContinuationToken;
@@ -82,7 +82,7 @@ namespace AzureTableStorageService
             try
             {
                 var retrieveOperation = TableOperation.Delete((NoteEntity)returnObject.Result);
-                var retrievedResult = await CreateCloudTable(GlobalStrings.CasesTableName)
+                var retrievedResult = await CreateCloudTable(GlobalStrings.NotesTableName)
                                             .ExecuteAsync(retrieveOperation);
 
                 return new ReturnObject(true, "case deleted");

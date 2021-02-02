@@ -9,9 +9,9 @@ namespace AzureTableStorageService
     /// </summary>
     public static class GlobalStrings
     {
-        public static string PartitionKey { get; } = "my_part_key";
-        public static string CasesTableName { get; } = "notes";
-        public static string AccountName { get; } = "enfejkaddatabas";
-        public static string AccountKey { get; } = "Pifw9FxP7GaqX7fj6E8jmXEK1HH9EUx7SlkHYwlqEkWa0NH0aCljbPA3ZxLoYKNyYkbdmmZ/TpSxXVqtECM/VA==";
+        public static string PartitionKey { get; } = "your_partitionkey";
+        public static string NotesTableName { get; } = "your_tablename";
+        public static string AccountName { get; } = "your_accountname";
+        public static string AccountKey { get; } = "your_accountkey";
     }
 }
